@@ -1,0 +1,9 @@
+{% extends 'application.html' %}
+{% block title %}用户登陆{% endblock %}
+{% block content %}
+	<form action="{% url 'login_session' %}" method="post">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" class="btn btn-primary" value="点击登陆">
+	</form>
+{% endblock %}

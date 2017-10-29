@@ -1,0 +1,8 @@
+{% extends 'application.html' %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+	{% for i in alluser %}
+		<h1>Welcome {{i.username}} and your password is {{i.password}}</h1>
+	{% endfor %}
+	<h1>这是登录进来的页面 }}</h1>
+{% endblock %}
