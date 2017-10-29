@@ -1,6 +1,6 @@
 #encoding:utf-8
-from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from .forms import AddForm
 from yuqingApp.models import User
 # Create your views here.
@@ -31,9 +31,12 @@ def login_session(request):
 		if User.objects.filter(username=form.cleaned_data['username']).exists():
 			user = User.objects.get(username=form.cleaned_data['username'])
 			if user.password == form.cleaned_data['password']:
-				request.session['user_id'] = user.id
-				return render(request,'welcome.html')
+				request.session['user_name'] = user.username
+				return redirect('/welcome/')
 			else:
 				return render(request,'login.html',{'form':form})
 		else:
 			return render(request,'login.html',{'form':form})
+
+def welcome(request):
+	return render(request,'welcome.html')

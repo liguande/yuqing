@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^new_user/$',yuqingApp_views.new,name="new_user"),
     url(r'^login/$',yuqingApp_views.login,name="login"),
     url(r'^login_session$',yuqingApp_views.login_session,name="login_session"),
+    url(r'^welcome/$',yuqingApp_views.welcome,name="welcome"),
 ]
