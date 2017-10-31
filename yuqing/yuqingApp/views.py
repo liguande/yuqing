@@ -1,16 +1,14 @@
 #encoding:utf-8
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,render_to_response
 from django.http import HttpResponse
 from .forms import AddForm
 from yuqingApp.models import User
+from django.template.context import RequestContext
 # Create your views here.
 
 def index(request):
-	return render(request,'home.html')
-
-def new(request):
 	form = AddForm()
-	return render(request,'new_user.html',{'form':form})
+	return render(request,'home.html',{'form':form})
 
 def create(request):
 	if request.method == 'POST':
@@ -21,10 +19,6 @@ def create(request):
 	alluser = User.objects.all()
 	return render(request,'welcome.html',{ 'alluser':alluser })
 
-def login(request):
-	form = AddForm()
-	return render(request,'login.html',{'form':form})
-
 def login_session(request):
 	form = AddForm(request.POST)
 	if form.is_valid():
@@ -34,9 +28,16 @@ def login_session(request):
 				request.session['user_name'] = user.username
 				return redirect('/welcome/')
 			else:
-				return render(request,'login.html',{'form':form})
+				return render_to_response('index.html',RequestContext(request,{'form':form,'password_is_wrong':True}))
 		else:
-			return render(request,'login.html',{'form':form})
+			return render_to_response('index.html',RequestContext(request,{'form':form,'username_is_wrong':True}))
 
+def logout(request):
+	try:
+		del request.session['user_name']
+	except KeyError:
+		pass
+	return redirect('/')
 def welcome(request):
 	return render(request,'welcome.html')
+

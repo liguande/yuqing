@@ -1,0 +1,18 @@
+.home-black{
+	height: 100vh;
+	width:100%;
+	position:absolute;
+	background-color: rgba(0,0,0,0.5);
+}
+.home-button-sign{
+	height: 100vh;
+	position: relative;
+	width:auto;
+	background-image: url('/static/img/home-sign-bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.btn{
+	border-radius: 0px;
+}
