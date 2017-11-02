@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/nav.css">
 <nav class="navbar navbar-default navbar-inverse">
-  <div class="container-fluid">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -25,7 +25,7 @@
           </ul>
         </li>
         {% else %}
-        <li><a href="&javascript;" role="button" data-toggle="modal" data-target="#login">登陆</a></li>
+        <li><a href="&javascript;" role="button" data-toggle="modal" data-target="#login">登录</a></li>
         <li><a href="&javascript;" role="button" data-toggle="modal" data-target="#signup">注册</a></li>
         {% endif %}
       </ul>
@@ -35,7 +35,7 @@
 
 
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -44,8 +44,15 @@
       <div class="modal-body">
         <form action="{% url 'login_session' %}" method="post">
           {% csrf_token %}
-          {{form}}
-          <input type="submit" class="btn btn-primary" value="点击登陆">
+          <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" placeholder="用户名" name="username">
+          </div>
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" placeholder="密码" name="password">
+          </div>
+          <input type="submit" class="btn btn-primary" value="点击登录">
         </form>
       </div>
     </div>
@@ -54,17 +61,32 @@
 
 
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="myModalLabel">用户登录</h4>
+        <h4 class="modal-title text-center" id="myModalLabel">用户注册</h4>
       </div>
       <div class="modal-body">
-        <form action="{% url 'login_session' %}" method="post">
+        <form action="{% url 'create_user' %}" method="post">
           {% csrf_token %}
-          {{form}}
-          <input type="submit" class="btn btn-primary" value="点击登陆">
+           <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" placeholder="用户名" name="username">
+          </div>
+          <div class="form-group">
+           <label for="email">邮箱</label>
+            <input type="email" class="form-control" id="email" placeholder="邮箱" name="email">
+          </div>
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" placeholder="密码" name="password">
+          </div>
+          <div class="form-group">
+            <label for="password_ensuer">确认密码</label>
+            <input type="password" class="form-control" id="password_ensuer" placeholder="确认密码" name="password_ensuer">
+          </div>
+          <input type="submit" class="btn btn-primary" value="点击注册">
         </form>
       </div>
     </div>

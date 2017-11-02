@@ -17,8 +17,9 @@
        <![endif]-->
 </head>
 <body>
+	{% block side_bar %}
+	{% endblock %}
 	{% include 'nav.html' %}
-	
 	{% block content %}
 		<div>默认内容</div>
 	{% endblock %}

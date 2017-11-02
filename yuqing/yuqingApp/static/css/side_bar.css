@@ -1,0 +1,36 @@
+.side-bar{
+	position:fixed;
+	left:0px;
+	height: 100vh;
+	box-shadow: 0 30px 30px 0 rgba(0, 0, 0, 0.15);
+	z-index: 9;
+}
+.side-bar-head{
+	height: 50px;
+	background-color: #101010;
+	color:#fff;
+	font-size: 300%;
+	text-align: center;
+}
+.side-bar-ul{
+	list-style: none;
+	margin: 0px;
+	padding: 10px;
+}
+.side-bar-li{
+	width: 100%;
+	margin-top:20px;
+	color:#29bd8b;
+}
+.side-bar-li .tubiao{
+	font-size:20px;
+}
+.side-bar-ul .new{
+	margin:0px;
+}
+.side-bar-li .icon{
+	font-size: 12px;
+}
+.active{
+	color:#FF7500;
+}

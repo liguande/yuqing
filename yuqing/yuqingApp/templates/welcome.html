@@ -1,8 +1,59 @@
 {% extends 'application.html' %}
 {% block title %}Welcome{% endblock %}
+{% block side_bar %}{% include 'side_bar.html' %}{% endblock %}
 {% block content %}
-	{% for i in alluser %}
-		<h1>Welcome {{i.username}} and your password is {{i.password}}</h1>
-	{% endfor %}
-	<h1>这是登录进来的页面</h1>
+	<link rel="stylesheet" href="/static/css/welcome.css">
+	<div class="container">
+		<div class="content-head text-center">
+			项目1
+		</div>
+		<div class="content-body">
+			<form action="{% url 'search' %}" method="post">
+				{% csrf_token %}
+				<span class="glyphicon glyphicon-time"></span>
+				<label for="time">时间：</label>
+				<select name="time" id="time">
+					<option value="day">今天</option>
+					<option value="week">一周内</option>
+					<option value="year">一年内</option>
+				</select>
+				
+				<span class="glyphicon glyphicon-globe"></span>
+				<label for="meiti">媒体类型：</label>
+				<select name="meiti" id="meiti">
+					<option value="all">全部</option>
+					<option value="weibo">微博</option>
+					<option value="weixin">微信</option>
+				</select>
+
+				<span class="glyphicon glyphicon-tags"></span>
+				<label for="guanjianci">关键词：</label>
+				<input type="text" id="guanjianci" placeholder="输入内容" name="guanjianci">
+
+				<span class="glyphicon glyphicon-tag"></span>
+				<label for="paichuguanjianci">排除关键词：</label>
+				<input type="text" id="paichuguanjianci" placeholder="输入内容" name="paichuguanjianci">
+
+				<input type="submit" class="btn btn-danger" value="搜索">
+			</form>
+			<div class="row">
+				<span class="tubiao">
+					<span class="glyphicon glyphicon-tasks"></span>
+					<span>图表</span>
+				</span>
+				<span class="liebiao active">
+					<span class="glyphicon glyphicon-list-alt"></span>
+					<span>信息列表（0条数据）</span>
+				</span>
+			</div>
+			<div class="content">
+				<div class="nothing-to-show">
+					<img src="/static/img/icons_smile.png" alt="">
+					<br>
+					<br>
+					<p>没有数据可以显示!</p>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

@@ -1,0 +1,21 @@
+.content-head{
+	height: 40px;
+	background-color: #fff;
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+}
+.content-body{
+	padding: 20px;
+}
+.row{
+	margin-top:10px;
+}
+.content{
+	width: 100%;
+	height:400px;
+}
+.nothing-to-show{
+	width:150px;
+	text-align:center;
+	margin:0px auto;
+}

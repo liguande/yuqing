@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^login_session$',yuqingApp_views.login_session,name="login_session"),
     url(r'^welcome/$',yuqingApp_views.welcome,name="welcome"),
     url(r'^logout$',yuqingApp_views.logout,name="logout"),
+    url(r'^search/$',yuqingApp_views.search,name="search"),
 ]
