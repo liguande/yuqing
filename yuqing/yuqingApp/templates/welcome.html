@@ -10,33 +10,48 @@
 		<div class="content-body">
 			<form action="{% url 'search' %}" method="post">
 				{% csrf_token %}
-				<span class="glyphicon glyphicon-time"></span>
-				<label for="time">时间：</label>
-				<select name="time" id="time">
-					<option value="day">今天</option>
-					<option value="week">一周内</option>
-					<option value="year">一年内</option>
-				</select>
-				
-				<span class="glyphicon glyphicon-globe"></span>
-				<label for="meiti">媒体类型：</label>
-				<select name="meiti" id="meiti">
-					<option value="all">全部</option>
-					<option value="weibo">微博</option>
-					<option value="weixin">微信</option>
-				</select>
+				<div class="chose">
+					<span class="glyphicon glyphicon-time"></span>
+					<label for="start_time">开始时间：</label>
+					<select name="time" id="start_time">
+						<option value="day">今天</option>
+						<option value="week">一周内</option>
+						<option value="year">一年内</option>
+					</select>
+					<label for="end_time">结束时间：</label>
+					<select name="time" id="end_time">
+						<option value="day">今天</option>
+						<option value="week">一周内</option>
+						<option value="year">一年内</option>
+					</select>
+				</div>
+				<div class="chose">
+					<ul class="meiti-chose-ul">
+						<li class="meiti-chose-li">
+							<span class="glyphicon glyphicon-globe"></span><label for="meiti">媒体类型：</label>
+						</li>
+						<li class="meiti-chose-li"><label><input type="checkbox" name="meiti" value="all">全部</label></li>
+						<li class="meiti-chose-li"><label><input type="checkbox" name="meiti" value="weixin">微信</label></li>
+						<li class="meiti-chose-li"><label><input type="checkbox" name="meiti" value="weibo">微博</label></li>
+						<li class="meiti-chose-li"><label><input type="checkbox" name="meiti" value="tengxun">腾讯</label></li>
+						<li class="meiti-chose-li"><label><input type="checkbox" name="meiti" value="xinlang">新浪</label></li>
+						<li class="meiti-chose-li"><label><input type="checkbox" name="meiti" value="wangyi">网易</label></li>
+					</ul>
+				</div>
+				<div class="chose">
+					<span class="glyphicon glyphicon-tags"></span>
+					<label for="guanjianci">关键词：</label>
+					<input type="text" id="guanjianci" placeholder="输入内容" name="guanjianci">
 
-				<span class="glyphicon glyphicon-tags"></span>
-				<label for="guanjianci">关键词：</label>
-				<input type="text" id="guanjianci" placeholder="输入内容" name="guanjianci">
-
-				<span class="glyphicon glyphicon-tag"></span>
-				<label for="paichuguanjianci">排除关键词：</label>
-				<input type="text" id="paichuguanjianci" placeholder="输入内容" name="paichuguanjianci">
-
-				<input type="submit" class="btn btn-danger" value="搜索">
+					<span class="glyphicon glyphicon-tag"></span>
+					<label for="paichuguanjianci">排除关键词：</label>
+					<input type="text" id="paichuguanjianci" placeholder="输入内容" name="paichuguanjianci">
+				</div>
+				<div class="chose">
+					<input type="submit" class="btn btn-danger btn-block" value="搜索">
+				</div>
 			</form>
-			<div class="row">
+			<div>
 				<span class="tubiao">
 					<span class="glyphicon glyphicon-tasks"></span>
 					<span>图表</span>

@@ -40,5 +40,12 @@ def welcome(request):
 	return render(request,'welcome.html')
 
 def search(request):
-	data = [{ 'time':request.POST['time'],'meiti':request.POST['meiti'],'guanjianci':request.POST['guanjianci'],'paichuguanjianci':request.POST['paichuguanjianci'] }]
+	data = [
+			{ 
+				'time':request.POST.getlist('time'),
+				'meiti':request.POST.getlist('meiti'),
+				'guanjianci':request.POST['guanjianci'],
+				'paichuguanjianci':request.POST['paichuguanjianci'] 
+			}
+		]
 	return HttpResponse(data)
